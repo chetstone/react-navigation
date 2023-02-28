@@ -8,7 +8,7 @@ import {
   Platform,
   LayoutChangeEvent,
 } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeColors, ThemeContext, NavigationRoute } from 'react-navigation';
 
 import CrossFadeIcon from './CrossFadeIcon';
@@ -103,9 +103,6 @@ class TabBarBottom extends React.Component<BottomTabBarProps, State> {
     showIcon: true,
     allowFontScaling: true,
     adaptive: isIOS11,
-    safeAreaInset: { bottom: 'always', top: 'never' } as React.ComponentProps<
-      typeof SafeAreaView
-    >['forceInset'],
   };
 
   // eslint-disable-next-line react/sort-comp
@@ -394,7 +391,6 @@ class TabBarBottom extends React.Component<BottomTabBarProps, State> {
       keyboardHidesTabBar,
       onTabPress,
       onTabLongPress,
-      safeAreaInset,
       style,
       tabStyle,
     } = this.props;
@@ -473,7 +469,7 @@ class TabBarBottom extends React.Component<BottomTabBarProps, State> {
         }
         onLayout={this._handleLayout}
       >
-        <SafeAreaView style={tabBarStyle} forceInset={safeAreaInset}>
+        <SafeAreaView style={tabBarStyle} edges={['right', 'bottom', 'left']}>
           {routes.map((route, index) => {
             const focused = index === navigation.state.index;
             const scene = { route, focused };

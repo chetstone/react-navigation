@@ -6,7 +6,6 @@ import {
   TextStyle,
   ViewStyle,
 } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
 import Animated from 'react-native-reanimated';
 import {
   NavigationRoute,
@@ -94,7 +93,6 @@ export type BottomTabBarOptions = {
     | LabelPosition
     | ((options: { deviceOrientation: Orientation }) => LabelPosition);
   adaptive?: boolean;
-  safeAreaInset?: React.ComponentProps<typeof SafeAreaView>['forceInset'];
   style?: StyleProp<ViewStyle>;
 };
 
